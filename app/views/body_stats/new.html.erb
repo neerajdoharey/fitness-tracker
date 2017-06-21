@@ -1,0 +1,141 @@
+<div class="item-editor-page">
+  <div class="title-block">
+    <h3 class="title">
+      Add new measurements <span class="sparkline bar" data-type="bar"></span>
+    </h3>
+  </div>
+  <%= render "shared/errors", obj: @body_stat %>
+  <% if @body_stat_last %>
+    <% body_stat = @body_stat_last  %>
+  <% else %>
+    <% body_stat = @body_stat  %>
+  <% end %>
+  <%= form_for @body_stat do |f| %>
+    <div class="card card-block body_stats">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :weight , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("weight.jpg", alt: "Weight") %>
+              <p>Weight (kg)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :weight , :class => 'form-control boxed',placeholder: "Weight (kg)" %></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :height , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("front_lat_spread.jpg", alt: "Height") %>
+              <p>Height (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :height , :class => 'form-control boxed',placeholder: "Height (cm)" %></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :body_fat , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("body_fat.jpg", alt: "Body Fat" ,size: "90x90") %>
+              <p>Body Fat (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :body_fat , :class => 'form-control boxed',placeholder: "Body Fat (%)" %></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :waist , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("waist.jpg", alt: "waist") %>
+              <p>Waist (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :waist , :class => 'form-control boxed',placeholder: "Waist (cm)" %></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :chest , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("chest.jpg", alt: "Chest") %>
+              <p>Chest (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :chest , :class => 'form-control boxed',placeholder: "Chest (cm)" %></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :arms , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("arm.jpg", alt: "Arms") %>
+              <p>Arms (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :arms , :class => 'form-control boxed',placeholder: "Arms (cm)" %></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :forearms , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("forearm.jpg", alt: "waist") %>
+              <p>Forearms (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :forearms , :class => 'form-control boxed',placeholder: "Forearms (cm)" %></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :shoulders , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("shoulder.jpg", alt: "Shoulder") %>
+              <p>Shoulders (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :shoulders , :class => 'form-control boxed',placeholder: "Shoulders (cm)" %></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :thighs , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("thigh.jpg", alt: "Thighs") %>
+              <p>Thighs (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :thighs , :class => 'form-control boxed',placeholder: "Thighs (cm)" %></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :calves , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("calf.jpg", alt: "Calves") %>
+              <p>Calves (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :calves , :class => 'form-control boxed',placeholder: "Calves (cm)" %></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :hips , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("hip.jpg", alt: "Hips") %>
+              <p>Hips (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :hips , :class => 'form-control boxed',placeholder: "Hips (cm)" %></div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group row">
+            <%= f.label :neck , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+              <%= image_tag("neck.jpg", alt: "Arms") %>
+              <p>Neck (cm)</p>
+            <% end %>
+            <div class="col-sm-8"><%= f.text_field :neck , :class => 'form-control boxed',placeholder: "Neck (cm)" %></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10 ">
+          <%= f.submit :class => "btn btn-primary" %>
+           <!-- <button type="submit" class="btn btn-primary">
+          Submit
+          </button> -->
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

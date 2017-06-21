@@ -13,4 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tether
+//= require bootstrap-sprockets
+//= require bootstrap-toolkit.min
+//= require tinycolor
+//= require nprogress
+
+//= require chart.min
+//= require user_profile
 //= require_tree .

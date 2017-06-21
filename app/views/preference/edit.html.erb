@@ -1,0 +1,47 @@
+<div class="forms-page">
+  <div class="title-block">
+    <h3 class="title">
+      User Preferences
+    </h3>
+    <!-- <p class="title-description"> User deatils </p> -->
+  </div>
+  <!-- <div class="subtitle-block">
+    <h3 class="subtitle">
+      Modular Admin Inputs
+    </h3>
+  </div> -->
+  <section class="section">
+    <div class="row sameheight-container">
+      <div class="col-md-6">
+        <div class="card card-block sameheight-item">
+          <!-- <div class="title-block">
+            <h3 class="title">
+              Underlined Inputs
+            </h3>
+          </div> -->
+          <%= form_for @user_preference , :html => {:class => 'form-horizontal', role: 'form'} do |f| %>
+            <div class="form-group">
+              <%= f.label :measure_type, class: "control-label" %>
+              <div>
+                <label>
+                  <%= f.radio_button(:measure_type, "US Customary" ,class: "radio" ) %>
+                  <span>US Customary</span>
+                </label> (Feet/Inches/Pounds)
+              </div>
+              <div>
+                <label>
+                  <%= f.radio_button(:measure_type, "Metric" ,class: "radio" ) %>
+                  <span>Metric</span>
+                </label>(Meters/Centimeters/Kilograms)
+              </div>
+            </div>
+            <div class="form-group">
+              <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+              <%= f.submit :class => "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

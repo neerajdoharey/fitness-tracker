@@ -1,0 +1,57 @@
+<div class="forms-page">
+  <div class="title-block">
+    <h3 class="title">
+      User Profile
+    </h3>
+    <p class="title-description"> User deatils </p>
+  </div>
+  <!-- <div class="subtitle-block">
+    <h3 class="subtitle">
+      Modular Admin Inputs
+    </h3>
+  </div> -->
+  <section class="section">
+    <div class="row sameheight-container">
+      <div class="col-md-6">
+        <div class="card card-block sameheight-item">
+          <!-- <div class="title-block">
+            <h3 class="title">
+              Underlined Inputs
+            </h3>
+          </div> -->
+          <%= form_for @user_profile , :html => {:class => 'form-horizontal', role: 'form'} do |f| %>
+          <div class="form-group">
+            <%= f.label :date_of_birth, class: "control-label"%>
+            <%= f.date_field :date_of_birth, class: "form-control underlined", data:{ provide:'datepicker' },readonly: "readonly" %>
+          </div>
+            <div class="form-group">
+              <%= f.label :gender, class: "control-label" %>
+              <div>
+                <label>
+                  <%= f.radio_button(:gender, "Male" ,class: "radio squared" ) %>
+                  <span>Male</span>
+                </label>
+                <label>
+                  <%= f.radio_button(:gender, "Female" ,class: "radio squared" ) %>
+                  <span>Female</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :address1, class: "control-label"%>
+              <%= f.text_field :address1, class: "form-control underlined" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :address2, class: "control-label"%>
+              <%= f.text_field :address2, class: "form-control underlined"  %>
+            </div>
+            <div class="form-group">
+              <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+              <%= f.submit :class => "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
