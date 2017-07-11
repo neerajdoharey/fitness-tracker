@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FitnessTracker
+    = csrf_meta_tags
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "ie=edge", "http-equiv" => "x-ua-compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :integrity => "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", :rel => "stylesheet"}/
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
+    %link{:href => "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
+  %body
+    .main-wrapper
+      #app.app.header-fixed.sidebar-fixed
+        = render 'layouts/header'
+        = render 'layouts/sidebar'
+        #sidebar-overlay.sidebar-overlay
+        %article.content
+          = render "layouts/flash"
+          = yield
+        %footer.footer
+          .footer-block.buttons
+            %iframe.footer-github-btn{:frameborder => "0", :height => "20px", :scrolling => "0", :src => "https://ghbtns.com/github-btn.html?user=modularcode&repo=modular-admin-html&type=star&count=true", :width => "140px"}
+          .footer-block.author
+            %ul
+              %li
+                created by
+                %a{:href => "#"} ModularCode
+              %li
+                %a{:href => "#"} get in touch

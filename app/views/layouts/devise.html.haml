@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FitnessTracker
+    = csrf_meta_tags
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "ie=edge", "http-equiv" => "x-ua-compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :integrity => "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", :rel => "stylesheet"}/
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .auth
+      .auth-container
+        .card
+          %header.auth-header
+            %h1.auth-title
+              .logo
+                %span.l.l1
+                %span.l.l2
+                %span.l.l3
+                %span.l.l4
+                %span.l.l5
+              Fitness Tracker
+          = yield
+        /
+          <div class="text-xs-center">
+          <a href="index.html" class="btn btn-secondary rounded btn-sm"> <i class="fa fa-arrow-left"></i> Back to dashboard </a>
+          </div>

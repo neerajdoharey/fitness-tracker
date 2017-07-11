@@ -4,7 +4,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   def create
      super
      resource.build_user_profile(gender: 'Male', date_of_birth: '2017-06-10 15:04:31', address1: "Default1", address2: "Default2")
-     resource.build_preference(measure_type: 'Metric',unit_for_measure: {weight: "Kg",lenght: "Cm"})
+     resource.build_preference(measure_type: 'Metric',unit_for_measure: {weight: "Kg",length: "Cm"})
      resource.save
   end
 

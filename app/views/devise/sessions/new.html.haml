@@ -1,0 +1,25 @@
+.auth-content
+  %p.text-xs-center LOGIN TO CONTINUE
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-group
+      .field
+        = f.label :email
+        %br/
+        = f.email_field :email, class: "form-control underlined", placeholder: "Your email address"
+    .form-group
+      .field
+        = f.label :password
+        %br/
+        = f.password_field :password, autocomplete: "off", class: "form-control underlined",  placeholder: "Your password"
+    .form-group
+      - if devise_mapping.rememberable?
+        = f.label :remember_me, for: "remember" do
+          = f.check_box :remember_me, class: "checkbox",id: "remember"
+          %span Remember me
+      = link_to "Forgot password?", new_password_path(resource_name) ,class: "forgot-btn pull-right"
+    .form-group
+      .actions
+        = f.submit "Log in", class: "btn btn-block btn-primary"
+      .form-group
+        %p.text-muted.text-xs-center
+          Do not have an account? #{link_to "Sign Up!", new_registration_path(resource_name)}

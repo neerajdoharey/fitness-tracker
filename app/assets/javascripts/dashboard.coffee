@@ -54,6 +54,6 @@ jQuery ->
           position: 'right'
           scaleLabel:
             display: true
-            labelString: 'Bodyfat'
+            labelString: 'Body Fat'
         }
       ])

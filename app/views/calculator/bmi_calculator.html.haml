@@ -1,0 +1,74 @@
+.item-editor-page
+  .title-block
+    %h3.title
+      BMI Calculator
+      %span.sparkline.bar{"data-type" => "bar"}
+  %section.section
+    .row.sameheight-container
+      .col-md-6
+        .card.card-block.sameheight-item
+          .title-block
+            %h3.title
+              Boxed Inputs
+          %form
+            .form-group
+              %label.control-label Input Text
+              %input.form-control.boxed{:type => "text"}/
+            .form-group
+              %label.control-label Input Password
+              %input.form-control.boxed{:type => "password"}/
+            .form-group
+              %label.control-label Placeholder Input
+              %input.form-control.boxed{:placeholder => "Placeholder text", :type => "text"}/
+
+      .col-md-6
+        .card.card-block.sameheight-item
+          .title-block
+            %h3.title
+              Calculated Body Mass
+          .card-title-block
+            %h3.title
+              BMI Table
+          %section.example
+            %table.table.table-hover
+              %thead
+                %tr
+                  %th #
+                  %th Category
+                  %th BMI range - kg/m2
+
+              %tbody
+                %tr
+                  %th{:scope => "row"} 1
+                  %td Severe Thinness
+                  %td < 16
+
+                %tr
+                  %th{:scope => "row"} 2
+                  %td Moderate Thinness
+                  %td 16 - 17
+
+                %tr
+                  %th{:scope => "row"} 3
+                  %td Mild Thinness
+                  %td 17 - 18.5
+                %tr
+                  %th{:scope => "row"} 4
+                  %td Normal
+                  %td 18.5 - 25
+                %tr
+                  %th{:scope => "row"} 5
+                  %td Overweight
+                  %td 25 - 30
+                %tr
+                  %th{:scope => "row"} 6
+                  %td Obese Class I
+                  %td 30 - 35
+                %tr
+                  %th{:scope => "row"} 7
+                  %td Obese Class II
+                  %td 35 - 40
+                %tr
+                  %th{:scope => "row"} 8
+                  %td Obese Class III
+                  %td > 40

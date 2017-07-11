@@ -17,25 +17,25 @@
           <div class="form-group row">
             <%= f.label :weight , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("weight.jpg", alt: "Weight") %>
-              <p>Weight (kg)</p>
+              <p>Weight (<%= weight_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :weight , :class => 'form-control boxed',placeholder: "Weight (kg)" %></div>
+            <div class="col-sm-8"><%= f.text_field :weight , :class => 'form-control boxed',placeholder: "Weight (#{weight_unit})" %></div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group row">
             <%= f.label :height , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("front_lat_spread.jpg", alt: "Height") %>
-              <p>Height (cm)</p>
+              <p>Height (<%= length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :height , :class => 'form-control boxed',placeholder: "Height (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :height , :class => 'form-control boxed',placeholder: "Height (#{length_unit})" %></div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group row">
             <%= f.label :body_fat , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("body_fat.jpg", alt: "Body Fat" ,size: "90x90") %>
-              <p>Body Fat (cm)</p>
+              <p>Body Fat (%)</p>
             <% end %>
             <div class="col-sm-8"><%= f.text_field :body_fat , :class => 'form-control boxed',placeholder: "Body Fat (%)" %></div>
           </div>
@@ -46,27 +46,27 @@
           <div class="form-group row">
             <%= f.label :waist , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("waist.jpg", alt: "waist") %>
-              <p>Waist (cm)</p>
+              <p>Waist (<%= length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :waist , :class => 'form-control boxed',placeholder: "Waist (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :waist , :class => 'form-control boxed',placeholder: "Waist (#{length_unit})" %></div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group row">
             <%= f.label :chest , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("chest.jpg", alt: "Chest") %>
-              <p>Chest (cm)</p>
+              <p>Chest (<%= length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :chest , :class => 'form-control boxed',placeholder: "Chest (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :chest , :class => 'form-control boxed',placeholder: "Chest (#{length_unit})" %></div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group row">
             <%= f.label :arms , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("arm.jpg", alt: "Arms") %>
-              <p>Arms (cm)</p>
+              <p>Arms (<%= length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :arms , :class => 'form-control boxed',placeholder: "Arms (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :arms , :class => 'form-control boxed',placeholder: "Arms (#{length_unit})" %></div>
           </div>
         </div>
       </div>
@@ -75,27 +75,27 @@
           <div class="form-group row">
             <%= f.label :forearms , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("forearm.jpg", alt: "waist") %>
-              <p>Forearms (cm)</p>
+              <p>Forearms (<%= length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :forearms , :class => 'form-control boxed',placeholder: "Forearms (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :forearms , :class => 'form-control boxed',placeholder: "Forearms (#{length_unit})" %></div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group row">
             <%= f.label :shoulders , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("shoulder.jpg", alt: "Shoulder") %>
-              <p>Shoulders (cm)</p>
+              <p>Shoulders (<%= length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :shoulders , :class => 'form-control boxed',placeholder: "Shoulders (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :shoulders , :class => 'form-control boxed',placeholder: "Shoulders (#{length_unit})" %></div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group row">
             <%= f.label :thighs , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("thigh.jpg", alt: "Thighs") %>
-              <p>Thighs (cm)</p>
+              <p>Thighs (<%= length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :thighs , :class => 'form-control boxed',placeholder: "Thighs (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :thighs , :class => 'form-control boxed',placeholder: "Thighs (#{length_unit})" %></div>
           </div>
         </div>
       </div>
@@ -104,27 +104,27 @@
           <div class="form-group row">
             <%= f.label :calves , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("calf.jpg", alt: "Calves") %>
-              <p>Calves (cm)</p>
+              <p>Calves (<%= length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :calves , :class => 'form-control boxed',placeholder: "Calves (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :calves , :class => 'form-control boxed',placeholder: "Calves (#{length_unit})" %></div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group row">
             <%= f.label :hips , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("hip.jpg", alt: "Hips") %>
-              <p>Hips (cm)</p>
+              <p>Hips (<%= length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :hips , :class => 'form-control boxed',placeholder: "Hips (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :hips , :class => 'form-control boxed',placeholder: "Hips (#{length_unit})" %></div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group row">
             <%= f.label :neck , :class => 'col-sm-4 form-control-label text-xs-center' do %>
               <%= image_tag("neck.jpg", alt: "Arms") %>
-              <p>Neck (cm)</p>
+              <p>Neck (<%=  length_unit %>)</p>
             <% end %>
-            <div class="col-sm-8"><%= f.text_field :neck , :class => 'form-control boxed',placeholder: "Neck (cm)" %></div>
+            <div class="col-sm-8"><%= f.text_field :neck , :class => 'form-control boxed',placeholder: "Neck (#{length_unit})" %></div>
           </div>
         </div>
       </div>

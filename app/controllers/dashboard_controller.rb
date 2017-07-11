@@ -8,6 +8,8 @@ class DashboardController < ApplicationController
     @dates = @body_stats.map { |body_stat| body_stat.created_at.strftime('%d %b %Y') }
     @lean_body_mass = lean_body_mass(@body_stats)
     @body_fat = body_fat(@body_stats)
+    @bmi = body_mass_index(@body_stats.last)
+
   end
 
   private
@@ -31,5 +33,16 @@ class DashboardController < ApplicationController
 
   def latest_stats(body_stats)
     return body_stats.last
+  end
+
+  def body_mass_index(body_stats)
+    if body_stats
+      weight = body_stats.weight
+      height = body_stats.height
+      bmi = (weight/((height/100)**2)).round(2)
+      return [bmi , bmi_chart(bmi)]
+    else
+      return ["-" , "-"]
+    end
   end
 end

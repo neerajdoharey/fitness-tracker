@@ -1,0 +1,36 @@
+%aside.sidebar
+  .sidebar-container
+    .sidebar-header
+      .brand
+        .logo
+          %span.l.l1
+          %span.l.l2
+          %span.l.l3
+          %span.l.l4
+          %span.l.l5
+        Fitness Tracker
+    %nav.menu
+      %ul#sidebar-menu.nav.metismenu
+        %li
+          %a{:href => "/"}
+            %i.fa.fa-home
+            Dashboard
+        %li.active.open
+          %a{:href => ""}
+            %i.fa.fa-th-large
+            Body Measurements
+            %i.fa.arrow
+          %ul
+            %li
+              = link_to "Measurment History",body_stats_path
+        %li
+          %a{:href => ""}
+            %i.fa.fa-calculator{"aria-hidden" => "true"}
+            Calculators
+            %i.fa.arrow
+          %ul
+            %li= link_to "BMI Calculator" , bmi_calculator_path
+        /
+          <li>
+          <a href="#"> <i class="fa fa-github-alt"></i> Theme Docs </a>
+          </li>

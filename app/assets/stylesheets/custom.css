@@ -47,3 +47,46 @@ color: #fff;cursor: default;border: 1px solid #85ce36;}
 .field_with_errors .form-control {
     border-color: #ff4444;
 }
+.arrowContainer {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    margin: 0 8px 0 15px;
+    position: relative;
+    width: 12px;
+}
+.arrowContainer.red div {
+    background-color: #cc0400;
+}
+.arrowContainer.green div {
+    background-color: #62bd19;
+}
+.arrowContainer.up div {
+    bottom: 0;
+}
+.arrowContainer div::after {
+    border-bottom: 15px solid #747474;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    content: "";
+    display: inline-block;
+    height: 0;
+    left: -5px;
+    position: relative;
+    top: 15px;
+    transform: rotate(180deg);
+    width: 0;
+}
+.arrowContainer.up div::after {
+    top: -15px;
+    transform: rotate(0deg);
+}
+.arrowContainer.green div::after {
+    border-bottom: 15px solid #62bd19;
+}
+.arrowContainer.red div::after {
+    border-bottom: 15px solid #cc0400;
+}
+.top_mar_20px {
+    margin-top: 20px;
+}
