@@ -7,7 +7,7 @@ module DashboardHelper
     arrow = ""
     if weight_diff > 0
       arrow = "up green"
-    else
+    elsif weight_diff < 0
       arrow = "down red"
     end
 
@@ -16,18 +16,22 @@ module DashboardHelper
   end
 
   def bodyfat_change(body_stats)
-    last_body_fat = body_stats[-1].body_fat
-    second_body_fat = body_stats[-2].body_fat
-    body_fat_diff =  last_body_fat - second_body_fat
-    unit = "%"
-    arrow = ""
-    if body_fat_diff > 0
-      arrow = "up green"
+    if !body_stats.empty? && body_stats.length > 1
+      last_body_fat = body_stats[-1].body_fat
+      second_body_fat = body_stats[-2].body_fat
+      body_fat_diff =  last_body_fat - second_body_fat
+      unit = "%"
+      arrow = ""
+      if body_fat_diff > 0
+        arrow = "up green"
+      elsif body_fat_diff < 0
+        arrow = "down red"
+      end
+      days_diff = body_stats[-1].created_at.to_date - body_stats[-2].created_at.to_date
+      tag_generator("body_fat", last_body_fat, second_body_fat, body_fat_diff, arrow, days_diff, unit, body_stats[-1].created_at)
     else
-      arrow = "down red"
+      return "-"
     end
-    days_diff = body_stats[-1].created_at.to_date - body_stats[-2].created_at.to_date
-    tag_generator("body_fat", last_body_fat, second_body_fat, body_fat_diff, arrow, days_diff, unit, body_stats[-1].created_at)
   end
 
   def tag_generator(image, last, second_last, differece, arrow, days_diff, unit, stat_date)
@@ -38,7 +42,13 @@ module DashboardHelper
         concat(content_tag(:h5, class: 'top_mar_20px') do
           concat("#{last}  #{unit}")
            concat(content_tag(:div,class: "arrowContainer #{arrow}") do
-             content_tag(:div)
+             if differece == 0
+               content_tag(:i ,class: 'fa fa-arrows-h 2x') do
+
+               end
+             else
+               content_tag(:div)
+             end
            end)
            concat(" #{differece.abs} #{unit}")
         end)

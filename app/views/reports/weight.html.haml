@@ -1,0 +1,182 @@
+%section.section.weight_reoprt
+  .row.sameheight-container
+    .col-md-12
+      .card.card-block.sameheight-item
+        .title-block
+          %h3.title
+            Weight Report
+        = form_tag reports_weight_path, :method => 'get' , class: 'form-inline weight' do
+          .form-group
+            %label{:for => "startingDate"} Starting Date
+            = text_field_tag :starting_date, params[:starting_date], class:"form-control", id:"startingDate"
+          .form-group.margin_left_20px
+            %label{:for => "endingDate"} Ending Date
+            = text_field_tag :ending_date, params[:ending_date], class:"form-control", id:"endingDate"
+          %button.btn.btn-primary.margin_left_20px{:type => "submit"} Generate Report
+%section.section
+  .row
+    .col-md-12
+      .card
+        .card-block
+          .card-title-block
+            %h3.title
+              = current_user.full_name
+          %section.example
+            = content_tag 'canvas', '', id: 'weight_report', width: '1000', height: '300', data: {weights: @weights , dates: @dates , bodyfats: @body_fats }
+            %table.table.table-bordered.table-sm.text-center
+              %thead.thead-default
+                %tr
+                  %th.text-center #
+                  %th.text-center Weight
+                  %th.text-center Change
+                  %th.text-center Days
+                  %th.text-center Date
+
+              %tbody
+                - @body_weight.each_with_index do |body_stat, index|
+                  %tr
+                    %th.text-center{:scope => "row"}
+                      = index+1
+                    %td
+                      = "#{body_stat.weight}  #{weight_unit}"
+                    %td
+                      -if index == 0
+                        %span -
+                      -else
+                        - diff =  weight_change_report(body_stat , @body_weight[index-1])
+                        -if diff  < 0
+                          = "#{diff*-1} #{weight_unit}"
+                          %i.fa.fa-arrow-down{"aria-hidden" => "true"}
+                        - elsif diff > 0
+                          = "#{diff} #{weight_unit}"
+                          %i.fa.fa-arrow-up{"aria-hidden" => "true"}
+                        - else
+                          = "0 #{weight_unit}"
+
+                    %td
+                      -if index == 0
+                        %span -
+                      -else
+                        - days = days_diff_report(body_stat , @body_weight[index-1])
+                        = "#{days} Days"
+                    %td
+                      = body_stat.created_at.strftime('%d %b %Y')
+
+:javascript
+  $( function() {
+    $( "#startingDate" ).datepicker({
+      dateFormat: "dd-mm-yy"
+    });
+    $( "#endingDate" ).datepicker({
+      dateFormat: "dd-mm-yy"
+    });
+  });
+
+:javascript
+  var ctx = document.getElementById("weight_report").getContext("2d");
+  		var data = {
+  			labels: [
+  				"Red",
+  				"Green",
+  				"Yellow"
+  			],
+  			datasets: [
+  				{
+  					data: [300, 50, 100],
+  					backgroundColor: [
+  						"#FF6384",
+  						"#36A2EB",
+  						"#FFCE56"
+  					],
+  					hoverBackgroundColor: [
+  						"#FF6384",
+  						"#36A2EB",
+  						"#FFCE56"
+  					]
+  				}]
+  		};
+
+  		Chart.plugins.register({
+  			beforeRender: function (chart) {
+  				if (chart.config.options.showAllTooltips) {
+  					// create an array of tooltips
+  					// we can't use the chart tooltip because there is only one tooltip per chart
+  					chart.pluginTooltips = [];
+  					chart.config.data.datasets.forEach(function (dataset, i) {
+  						chart.getDatasetMeta(i).data.forEach(function (sector, j) {
+  							chart.pluginTooltips.push(new Chart.Tooltip({
+  								_chart: chart.chart,
+  								_chartInstance: chart,
+  								_data: chart.data,
+  								_options: chart.options.tooltips,
+  								_active: [sector]
+  							}, chart));
+  						});
+  					});
+
+  					// turn off normal tooltips
+  					chart.options.tooltips.enabled = false;
+  				}
+  			},
+  			afterDraw: function (chart, easing) {
+  				if (chart.config.options.showAllTooltips) {
+  					// we don't want the permanent tooltips to animate, so don't do anything till the animation runs atleast once
+  					if (!chart.allTooltipsOnce) {
+  						if (easing !== 1)
+  							return;
+  						chart.allTooltipsOnce = true;
+  					}
+
+  					// turn on tooltips
+  					chart.options.tooltips.enabled = true;
+  					Chart.helpers.each(chart.pluginTooltips, function (tooltip) {
+              // This line checks if the item is visible to display the tooltip
+            	if(!tooltip._active[0].hidden){
+                tooltip.initialize();
+                tooltip.update();
+                // we don't actually need this since we are not animating tooltips
+                tooltip.pivot();
+                tooltip.transition(easing).draw();
+              }
+  					});
+  					chart.options.tooltips.enabled = false;
+  				}
+  			}
+  		})
+
+  		var myChart = new Chart(ctx, {
+  			type: 'line',
+  			data: {
+            labels: $("#weight_report").data('dates'),
+            datasets: [{
+                label: ' Weight (Kg)',
+                data: $("#weight_report").data('weights'),
+                borderColor: 'rgb(133,206,54)',
+                backgroundColor: 'rgb(133,206,54)',
+                borderWidth: 3,
+                fill: false
+            }]
+        },
+        options: {
+            animation: false,
+            showAllTooltips: true,
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Date'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:false
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Weight'
+                    }
+
+                }]
+            },
+        }
+  		});

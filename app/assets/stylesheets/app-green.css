@@ -1356,8 +1356,9 @@ label,
 .logo {
   display: inline-block;
   width: 45px;
-  height: 25px;
+  /*height: 15px;*/
   vertical-align: middle;
+  margin-top: 5px;
   margin-right: 5px;
   position: relative; }
   .logo .l {

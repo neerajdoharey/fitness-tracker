@@ -1,0 +1,82 @@
+.items-list-page
+  .title-search-block
+    .title-block
+      .row
+        .col-md-7
+          %h3.title
+            Diet Plan History
+            \#{link_to "Add Diet Plan", new_diet_plan_path, class: "btn btn-primary btn-sm rounded-s"}
+            .action.dropdown
+              %button#dropdownMenu1.btn.btn-sm.rounded-s.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                More actions...
+              .dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+                / <a class="dropdown-item" href="#"><i class="fa fa-pencil-square-o icon"></i>Mark as a draft</a>
+                %a.dropdown-item{"data-target" => "#confirm-modal", "data-toggle" => "modal", :href => "#"}
+                  %i.fa.fa-close.icon>
+                  Delete
+          %p.title-description Daily Diet Chart
+    .items-search
+      %form.form-inline
+        .input-group
+          %input.form-control.boxed.rounded-s{:placeholder => "Search for...", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-secondary.rounded-s{:type => "button"}
+              %i.fa.fa-search
+  .card.items
+    %ul.item-list.striped
+      %li.item.item-list-header.hidden-sm-down
+        .item-row
+          .item-col.fixed.item-col-check
+            %label#select-all-items.item-check
+              %input.checkbox{:type => "checkbox"}/
+              %span
+          .item-col.item-col-header.item-col-author
+            .no-overflow
+              %span Title
+          .item-col.item-col-header.item-col-date
+            %div
+              %span Download
+          .item-col.item-col-header.item-col-date
+            %div
+              %span Published
+          .item-col.item-col-header.fixed.item-col-actions-dropdown
+      - @diet_plans.each do |diet_plan|
+        %li.item
+          .item-row
+            .item-col.fixed.item-col-check
+              %label#select-all-items.item-check
+                %input.checkbox{:type => "checkbox"}/
+                %span
+            .item-col.item-col-author
+              .item-heading Title
+              .no-overflow
+                = diet_plan.title
+            .item-col.item-col-date
+              .item-heading Downlaod
+              .no-overflow
+                = link_to "Download PDF", diet_plan_path(diet_plan, format: 'pdf')
+            .item-col.item-col-date
+              .item-heading Published
+              .no-overflow
+                = diet_plan.created_at.strftime("%d %b %Y")
+            .item-col.fixed.item-col-actions-dropdown
+              .item-actions-dropdown
+                %a.item-actions-toggle-btn
+                  %span.inactive
+                    %i.fa.fa-cog
+                  %span.active
+                    %i.fa.fa-chevron-circle-right
+                .item-actions-block
+                  %ul.item-actions-list
+                    %li
+                      = link_to diet_plan_path(diet_plan) , method: :delete ,data: {confirm: "Are you sure"} , class: "remove" do
+                        %i.fa.fa-trash-o
+                      / <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
+                    %li
+                      = link_to edit_diet_plan_path(diet_plan) , class: "edit" do
+                        %i.fa.fa-pencil
+                    %li
+                      = link_to diet_plan_path(diet_plan) , class: "edit" do
+                        %i.fa.fa-eye
+  %nav.text-xs-right
+    = will_paginate @diet_plans

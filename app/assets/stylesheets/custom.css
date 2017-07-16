@@ -90,3 +90,21 @@ color: #fff;cursor: default;border: 1px solid #85ce36;}
 .top_mar_20px {
     margin-top: 20px;
 }
+.col-sm-8.middle-align {
+    margin: auto;
+    vertical-align: middle;
+}
+.padding_20px{padding: 20px;}
+.margin_left_20px{margin-left: 20px;}
+.form-inline.weight .form-group > label {
+    display: inline;
+}
+@media print{
+  #pdf_link , .card-footer{ display: none;}
+  header.header{display: none;}
+  .app { background-color: #ffffff; }
+  .app .content{padding-top: 0px;}
+  .card .card-header .header-block{padding: 0.5rem 0px}
+  .card-block{padding: 0px}
+  .weight_reoprt{display: none;}
+}

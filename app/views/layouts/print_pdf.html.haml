@@ -19,15 +19,4 @@
         = render 'layouts/sidebar'
         #sidebar-overlay.sidebar-overlay
         %article.content
-          = render "layouts/flash"
           = yield
-          = render "shared/add_weight"
-          = render "shared/add_bodyfat"
-        %footer.footer
-          .footer-block.buttons
-            
-          .footer-block.author
-            %ul
-              %li
-                created by
-                %a{:href => "#"} Neeraj Doharey

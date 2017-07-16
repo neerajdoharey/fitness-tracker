@@ -1,0 +1,29 @@
+<div class="modal fade" id="addbodyfatModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_for :body,  :html => {:class => 'form-horizontal', role: 'form'} , url: add_bodyfat_path do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add weight</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group row">
+                <%= f.label :bodyfat , :class => 'col-sm-4 form-control-label text-xs-center' do %>
+                  <%= image_tag("body_fat.jpg", alt: "Body Fat" ,size: "90x90") %>
+                  <p>Weight (<%= weight_unit %>)</p>
+                <% end %>
+                <div class="col-sm-8 middle-align"><%= f.text_field :bodyfat , :class => 'form-control boxed',placeholder: "Body Fat (%)" %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit "Save bodyfat", :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

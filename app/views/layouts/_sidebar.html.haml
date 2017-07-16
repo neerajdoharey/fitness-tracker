@@ -3,19 +3,20 @@
     .sidebar-header
       .brand
         .logo
-          %span.l.l1
-          %span.l.l2
-          %span.l.l3
-          %span.l.l4
-          %span.l.l5
+          = image_tag("logo.png", alt: "logo")
+          -# %span.l.l1
+          -# %span.l.l2
+          -# %span.l.l3
+          -# %span.l.l4
+          -# %span.l.l5
         Fitness Tracker
     %nav.menu
       %ul#sidebar-menu.nav.metismenu
-        %li
+        %li{:class => "#{'active' if params[:controller] == 'dashboard'}"}
           %a{:href => "/"}
             %i.fa.fa-home
             Dashboard
-        %li.active.open
+        %li{:class => "#{'active open' if params[:controller] == 'body_stats'}"}
           %a{:href => ""}
             %i.fa.fa-th-large
             Body Measurements
@@ -23,13 +24,32 @@
           %ul
             %li
               = link_to "Measurment History",body_stats_path
-        %li
+            %li
+              %a{"data-target" => "#addweightModal", "data-toggle" => "modal", :href => "#"} Add weight
+            %li
+              %a{"data-target" => "#addbodyfatModal", "data-toggle" => "modal", :href => "#"} Add Body Fat
+        %li{:class => "#{'active open' if params[:controller] == 'diet_plans'}"}
+          %a{:href => ""}
+            %i.fa.fa-list-alt{"aria-hidden" => "true"}
+            Diet Plan
+            %i.fa.arrow
+          %ul
+            %li= link_to "Diet Plan History" , diet_plans_path
+        %li{:class => "#{'active open' if params[:controller] == 'calculator'}"}
           %a{:href => ""}
             %i.fa.fa-calculator{"aria-hidden" => "true"}
             Calculators
             %i.fa.arrow
           %ul
             %li= link_to "BMI Calculator" , bmi_calculator_path
+        %li{:class => "#{'active open' if params[:controller] == 'reports'}"}
+          %a{:href => ""}
+            %i.fa.fa-line-chart{"aria-hidden" => "true"}
+            Reports
+            %i.fa.arrow
+          %ul
+            %li= link_to "Weight report" , reports_weight_path
+            %li= link_to "Bodyfat report" , reports_bodyfat_path
         /
           <li>
           <a href="#"> <i class="fa fa-github-alt"></i> Theme Docs </a>

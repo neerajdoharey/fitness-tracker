@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :preference
   serialize :init_settings
   has_many :body_stats
+  has_many :diet_plans
   
   before_save { self.init_settings = {:profile => true,:preferences => true}}
 

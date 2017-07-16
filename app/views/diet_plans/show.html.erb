@@ -1,0 +1,11 @@
+<div class="card card-default">
+  <div class="card-header">
+    <div class="header-block">
+      <p class="title"> <%= current_user.full_name %> </p>
+    </div>
+  </div>
+  <div class="card-block">
+    <%= @diet_plan.diet_description.html_safe %>
+  </div>
+  <div class="card-footer"> <%= link_to "Download PDF", diet_plan_path(@diet_plan, format: 'pdf') ,id:"pdf_link", target:'_blank' %>  <%= link_to "Edit Diet", edit_diet_plan_path(@diet_plan)  %></div>
+</div>

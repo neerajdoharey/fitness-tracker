@@ -1,0 +1,135 @@
+.item-editor-page
+  .title-block
+    %h3.title
+      Add new diet plan
+      %span.sparkline.bar{"data-type" => "bar"}
+  = render "shared/errors", obj: @diet_plan
+  = form_for @diet_plan do |f|
+    .card.card-block
+      .form-group.row
+        = f.label :title , :class => 'col-sm-2 form-control-label text-xs-right'
+        .col-sm-10
+          = f.text_field :title , :class => 'form-control boxed',placeholder: "Title"
+      .form-group.row
+        = f.label :diet_description , :class => 'col-sm-2 form-control-label text-xs-right'
+        = f.hidden_field :diet_description, :value => ""
+        .col-sm-10
+          .wyswyg
+            .toolbar
+              %span.ql-format-group
+                %select.ql-size{:title => "Size"}
+                  %option{:value => "10px"} Small
+                  %option{:selected => "selected", :value => "13px"} Normal
+                  %option{:value => "18px"} Large
+                  %option{:value => "32px"} Huge
+              %span.ql-format-group
+                %span.ql-format-button.ql-bold{:title => "Bold"}
+                %span.ql-format-separator
+                %span.ql-format-button.ql-italic{:title => "Italic"}
+                %span.ql-format-separator
+                %span.ql-format-button.ql-underline{:title => "Underline"}
+                %span.ql-format-separator
+                %span.ql-format-button.ql-strike{:title => "Strikethrough"}
+              %span.ql-format-group
+                %select.ql-color{:title => "Text Color"}
+                  %option{:label => "rgb(0, 0, 0)", :selected => "selected", :value => "rgb(0, 0, 0)"}
+                  %option{:label => "rgb(230, 0, 0)", :value => "rgb(230, 0, 0)"}
+                  %option{:label => "rgb(255, 153, 0)", :value => "rgb(255, 153, 0)"}
+                  %option{:label => "rgb(255, 255, 0)", :value => "rgb(255, 255, 0)"}
+                  %option{:label => "rgb(0, 138, 0)", :value => "rgb(0, 138, 0)"}
+                  %option{:label => "rgb(0, 102, 204)", :value => "rgb(0, 102, 204)"}
+                  %option{:label => "rgb(153, 51, 255)", :value => "rgb(153, 51, 255)"}
+                  %option{:label => "rgb(255, 255, 255)", :value => "rgb(255, 255, 255)"}
+                  %option{:label => "rgb(250, 204, 204)", :value => "rgb(250, 204, 204)"}
+                  %option{:label => "rgb(255, 235, 204)", :value => "rgb(255, 235, 204)"}
+                  %option{:label => "rgb(255, 255, 204)", :value => "rgb(255, 255, 204)"}
+                  %option{:label => "rgb(204, 232, 204)", :value => "rgb(204, 232, 204)"}
+                  %option{:label => "rgb(204, 224, 245)", :value => "rgb(204, 224, 245)"}
+                  %option{:label => "rgb(235, 214, 255)", :value => "rgb(235, 214, 255)"}
+                  %option{:label => "rgb(187, 187, 187)", :value => "rgb(187, 187, 187)"}
+                  %option{:label => "rgb(240, 102, 102)", :value => "rgb(240, 102, 102)"}
+                  %option{:label => "rgb(255, 194, 102)", :value => "rgb(255, 194, 102)"}
+                  %option{:label => "rgb(255, 255, 102)", :value => "rgb(255, 255, 102)"}
+                  %option{:label => "rgb(102, 185, 102)", :value => "rgb(102, 185, 102)"}
+                  %option{:label => "rgb(102, 163, 224)", :value => "rgb(102, 163, 224)"}
+                  %option{:label => "rgb(194, 133, 255)", :value => "rgb(194, 133, 255)"}
+                  %option{:label => "rgb(136, 136, 136)", :value => "rgb(136, 136, 136)"}
+                  %option{:label => "rgb(161, 0, 0)", :value => "rgb(161, 0, 0)"}
+                  %option{:label => "rgb(178, 107, 0)", :value => "rgb(178, 107, 0)"}
+                  %option{:label => "rgb(178, 178, 0)", :value => "rgb(178, 178, 0)"}
+                  %option{:label => "rgb(0, 97, 0)", :value => "rgb(0, 97, 0)"}
+                  %option{:label => "rgb(0, 71, 178)", :value => "rgb(0, 71, 178)"}
+                  %option{:label => "rgb(107, 36, 178)", :value => "rgb(107, 36, 178)"}
+                  %option{:label => "rgb(68, 68, 68)", :value => "rgb(68, 68, 68)"}
+                  %option{:label => "rgb(92, 0, 0)", :value => "rgb(92, 0, 0)"}
+                  %option{:label => "rgb(102, 61, 0)", :value => "rgb(102, 61, 0)"}
+                  %option{:label => "rgb(102, 102, 0)", :value => "rgb(102, 102, 0)"}
+                  %option{:label => "rgb(0, 55, 0)", :value => "rgb(0, 55, 0)"}
+                  %option{:label => "rgb(0, 41, 102)", :value => "rgb(0, 41, 102)"}
+                  %option{:label => "rgb(61, 20, 102)", :value => "rgb(61, 20, 102)"}
+                %span.ql-format-separator
+                %select.ql-background{:title => "Background Color"}
+                  %option{:label => "rgb(0, 0, 0)", :value => "rgb(0, 0, 0)"}
+                  %option{:label => "rgb(230, 0, 0)", :value => "rgb(230, 0, 0)"}
+                  %option{:label => "rgb(255, 153, 0)", :value => "rgb(255, 153, 0)"}
+                  %option{:label => "rgb(255, 255, 0)", :value => "rgb(255, 255, 0)"}
+                  %option{:label => "rgb(0, 138, 0)", :value => "rgb(0, 138, 0)"}
+                  %option{:label => "rgb(0, 102, 204)", :value => "rgb(0, 102, 204)"}
+                  %option{:label => "rgb(153, 51, 255)", :value => "rgb(153, 51, 255)"}
+                  %option{:label => "rgb(255, 255, 255)", :selected => "selected", :value => "rgb(255, 255, 255)"}
+                  %option{:label => "rgb(250, 204, 204)", :value => "rgb(250, 204, 204)"}
+                  %option{:label => "rgb(255, 235, 204)", :value => "rgb(255, 235, 204)"}
+                  %option{:label => "rgb(255, 255, 204)", :value => "rgb(255, 255, 204)"}
+                  %option{:label => "rgb(204, 232, 204)", :value => "rgb(204, 232, 204)"}
+                  %option{:label => "rgb(204, 224, 245)", :value => "rgb(204, 224, 245)"}
+                  %option{:label => "rgb(235, 214, 255)", :value => "rgb(235, 214, 255)"}
+                  %option{:label => "rgb(187, 187, 187)", :value => "rgb(187, 187, 187)"}
+                  %option{:label => "rgb(240, 102, 102)", :value => "rgb(240, 102, 102)"}
+                  %option{:label => "rgb(255, 194, 102)", :value => "rgb(255, 194, 102)"}
+                  %option{:label => "rgb(255, 255, 102)", :value => "rgb(255, 255, 102)"}
+                  %option{:label => "rgb(102, 185, 102)", :value => "rgb(102, 185, 102)"}
+                  %option{:label => "rgb(102, 163, 224)", :value => "rgb(102, 163, 224)"}
+                  %option{:label => "rgb(194, 133, 255)", :value => "rgb(194, 133, 255)"}
+                  %option{:label => "rgb(136, 136, 136)", :value => "rgb(136, 136, 136)"}
+                  %option{:label => "rgb(161, 0, 0)", :value => "rgb(161, 0, 0)"}
+                  %option{:label => "rgb(178, 107, 0)", :value => "rgb(178, 107, 0)"}
+                  %option{:label => "rgb(178, 178, 0)", :value => "rgb(178, 178, 0)"}
+                  %option{:label => "rgb(0, 97, 0)", :value => "rgb(0, 97, 0)"}
+                  %option{:label => "rgb(0, 71, 178)", :value => "rgb(0, 71, 178)"}
+                  %option{:label => "rgb(107, 36, 178)", :value => "rgb(107, 36, 178)"}
+                  %option{:label => "rgb(68, 68, 68)", :value => "rgb(68, 68, 68)"}
+                  %option{:label => "rgb(92, 0, 0)", :value => "rgb(92, 0, 0)"}
+                  %option{:label => "rgb(102, 61, 0)", :value => "rgb(102, 61, 0)"}
+                  %option{:label => "rgb(102, 102, 0)", :value => "rgb(102, 102, 0)"}
+                  %option{:label => "rgb(0, 55, 0)", :value => "rgb(0, 55, 0)"}
+                  %option{:label => "rgb(0, 41, 102)", :value => "rgb(0, 41, 102)"}
+                  %option{:label => "rgb(61, 20, 102)", :value => "rgb(61, 20, 102)"}
+              %span.ql-format-group
+                %span.ql-format-button.ql-list{:title => "List"}
+                %span.ql-format-separator
+                %span.ql-format-button.ql-bullet{:title => "Bullet"}
+                %span.ql-format-separator
+                %select.ql-align{:title => "Text Alignment"}
+                  %option{:label => "Left", :selected => "selected", :value => "left"}
+                  %option{:label => "Center", :value => "center"}
+                  %option{:label => "Right", :value => "right"}
+                  %option{:label => "Justify", :value => "justify"}
+              /
+                <span class="ql-format-group">
+                <span title="Link" class="ql-format-button ql-link"></span>
+                <span class="ql-format-separator"></span> <button type="button" title="Image" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-media">
+                <i class="fa fa-image"></i> Media
+                </button> </span>
+              %span.ql-format-group
+            / Create the editor container
+            .editor
+      .form-group.row
+        .col-sm-10.col-sm-offset-2
+          = f.submit :class => "btn btn-primary"
+
+:javascript
+  $(".editor").on('DOMSubtreeModified', "#ql-editor-1", function() {
+      var my_diet = $(this).html();
+      console.log(my_diet)
+      $("#diet_plan_diet_description").val(my_diet);
+  });
